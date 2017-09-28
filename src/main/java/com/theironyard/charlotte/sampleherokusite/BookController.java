@@ -1,21 +1,17 @@
 package com.theironyard.charlotte.sampleherokusite;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 public class BookController {
 
     List<Book> books = new ArrayList<>();
 
-
-
-
+    @CrossOrigin
     @RequestMapping(path = "/books", method = RequestMethod.GET)
     public List<Book> getBooks() {
 //        Book greenEggsAndHam = new Book("1234","Green Eggs And Ham",
@@ -26,6 +22,8 @@ public class BookController {
     }
     // {"isbn":"12345","title":"The Great Gatsomething","author":"yamama"}
 
+//    @CrossOrigin(origins = {"http://thegoogs.com", "yahoo.com", "idk.com"})
+    @CrossOrigin
     @RequestMapping(path = "/books", method = RequestMethod.POST)
     public void addBook(@RequestBody Book book) {
         books.add(book);
