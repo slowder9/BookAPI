@@ -22,7 +22,20 @@ public class BookController {
     }
     // {"isbn":"12345","title":"The Great Gatsomething","author":"yamama"}
 
-//    @CrossOrigin(origins = {"http://thegoogs.com", "yahoo.com", "idk.com"})
+    @CrossOrigin
+    @RequestMapping(path = "/check_in/{index}", method = RequestMethod.PATCH)
+    public void checkIn(@PathVariable("index") int idx) {
+        books.get(idx).setCheckedOut(false);
+
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/check_out/{index}", method = RequestMethod.PATCH)
+    public void checkOut(@PathVariable("index") int idx) {
+        books.get(idx).setCheckedOut(true);
+    }
+
+//  @CrossOrigin(origins = {"http://thegoogs.com", "yahoo.com", "idk.com"})
     @CrossOrigin
     @RequestMapping(path = "/books", method = RequestMethod.POST)
     public void addBook(@RequestBody Book book) {
